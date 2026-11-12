@@ -101,29 +101,39 @@ function MenuTabs() {
             </button>
           ))}
         </div>
-        {current.sizes && (
-          <p className="sizes">
-            Two sizes: <span className="size">L</span> / <span className="size">XL</span> (XL price
-            first)
-          </p>
-        )}
+        {/* always rendered (hidden when not Tea) so the tab bar keeps its height */}
+        <p className="sizes" data-off={!current.sizes || undefined} aria-hidden={!current.sizes}>
+          Two sizes: <span className="size">L</span> / <span className="size">XL</span> (XL price
+          first)
+        </p>
       </div>
 
-      <div
-        key={current.id /* remount so the enter animation replays on every switch */}
-        className="menu-panel"
-        role="tabpanel"
-        id={`panel-${current.id}`}
-        aria-labelledby={`tab-${current.id}`}
-        tabIndex={0}
-      >
-        {current.note && <p className="menu-note">{current.note}</p>}
-        {current.sizes ? <TeaGroups groups={current.groups} /> : <ListGroups groups={current.groups} />}
-        {current.groups.some((g) => g.items.some((i) => i.best)) && (
-          <p className="menu-legend">
-            <span className="chip-best">★ Bestseller</span> From our Must Try Flavors wall.
-          </p>
-        )}
+      {/* All panels share one grid cell, so the menu is always as tall as the tallest one and
+          the page below never jumps when switching tabs. Only the active panel is visible. */}
+      <div className="menu-panels">
+        {menu.map((cat) => {
+          const on = cat.id === active
+          return (
+            <div
+              key={cat.id}
+              className="menu-panel"
+              role="tabpanel"
+              id={`panel-${cat.id}`}
+              aria-labelledby={`tab-${cat.id}`}
+              tabIndex={on ? 0 : -1}
+              data-active={on || undefined}
+              inert={!on}
+            >
+              {cat.note && <p className="menu-note">{cat.note}</p>}
+              {cat.sizes ? <TeaGroups groups={cat.groups} /> : <ListGroups groups={cat.groups} />}
+              {cat.groups.some((g) => g.items.some((i) => i.best)) && (
+                <p className="menu-legend">
+                  <span className="chip-best">★ Bestseller</span> From our Must Try Flavors wall.
+                </p>
+              )}
+            </div>
+          )
+        })}
       </div>
     </>
   )

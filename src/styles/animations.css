@@ -280,10 +280,8 @@
     transition: color 0.25s;
   }
 
-  .menu-note,
-  .menu-legend,
-  .tea-card,
-  .menu-group {
+  /* only the visible panel animates; it replays each time a panel becomes active */
+  [data-active] :is(.menu-note, .menu-legend, .tea-card, .menu-group) {
     animation: rise-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
 

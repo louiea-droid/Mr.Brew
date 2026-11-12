@@ -572,6 +572,27 @@ h2 {
   color: var(--milk);
 }
 
+.menu-panels {
+  display: grid;
+}
+
+.menu-panel {
+  grid-area: 1 / 1;
+}
+
+.menu-panel:not([data-active]),
+.sizes[data-off] {
+  visibility: hidden;
+}
+
+/* Phones: Tea stacks into one tall column, so a shared height would leave ~1000px of blank
+   space under Coffee. Each tab takes its own height here; the page below is off-screen anyway. */
+@media (max-width: 600px) {
+  .menu-panel:not([data-active]) {
+    display: none;
+  }
+}
+
 .menu-note {
   color: var(--muted);
   margin-bottom: 24px;
