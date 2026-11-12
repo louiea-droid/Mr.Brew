@@ -752,6 +752,10 @@ h2 {
   color: var(--espresso);
 }
 
+.slide.slide-portrait img {
+  aspect-ratio: 2 / 3;
+}
+
 /* Only the shop row (customer row still empty): the section title says it all */
 .gallery-head + .carousel:last-child .carousel-label {
   display: none;

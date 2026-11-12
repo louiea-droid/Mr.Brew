@@ -35,6 +35,16 @@ export const gallery = [
   ['sign-motorbikes', 'Mr. Brew logo on the shop wall with motorbikes parked below'],
 ]
 
-// Customer photos for the "Our Ka-brews" row, same [file, alt] shape as `gallery`
-// (files go in public/images/gallery/). The row stays hidden while this is empty.
-export const customers = []
+// Customer photos for the "Our Ka-brews" row: portrait 600x900, same [file, alt] shape as `gallery`
+// (files in public/images/gallery/). From a photo set on the Facebook page; swap for others the
+// owner prefers. The row hides itself if this list is empty.
+export const customers = [
+  ['kabrew-1', 'Two Ka-brews in black shirts sitting at a table with their drinks'],
+  ['kabrew-2', 'A Ka-brew in a cap standing by the counter with an iced drink'],
+  ['kabrew-3', 'A Ka-brew in a black shirt at the wall counter with his drink'],
+  ['kabrew-4', 'Two Ka-brews on stools under the Must Try Flavors wall, one raising a drink'],
+  ['kabrew-5', 'A Ka-brew holding a milk tea next to a friend under the flavors wall'],
+  ['kabrew-6', 'Two Ka-brews relaxing on wooden stools with their drinks'],
+  ['kabrew-7', 'Two Ka-brews looking at their drinks under the flavors wall'],
+  ['kabrew-8', "A Ka-brew pointing at a friend's milk tea"],
+]

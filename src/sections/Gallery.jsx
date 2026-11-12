@@ -14,17 +14,18 @@ export default function Gallery() {
       </Carousel>
       {customers.length > 0 && (
         <Carousel label="Our Ka-brews" paused={paused}>
-          <Slides photos={customers} />
+          <Slides photos={customers} portrait />
         </Carousel>
       )}
     </section>
   )
 }
 
-function Slides({ photos }) {
+function Slides({ photos, portrait }) {
+  const [w, h] = portrait ? [600, 900] : [2048, 1366]
   return photos.map(([file, alt]) => (
-    <li key={file} className="slide">
-      <img src={`/images/gallery/${file}.jpg`} alt={alt} width="2048" height="1366" loading="lazy" />
+    <li key={file} className={portrait ? 'slide slide-portrait' : 'slide'}>
+      <img src={`/images/gallery/${file}.jpg`} alt={alt} width={w} height={h} loading="lazy" />
     </li>
   ))
 }
