@@ -752,8 +752,13 @@ h2 {
   color: var(--espresso);
 }
 
-.slide.slide-portrait img {
-  aspect-ratio: 2 / 3;
+/* Customer photos are small square crops: smaller square cards keep them sharp */
+.slide.slide-square {
+  height: 200px;
+}
+
+.slide.slide-square img {
+  aspect-ratio: 1;
 }
 
 /* Only the shop row (customer row still empty): the section title says it all */
@@ -1125,5 +1130,9 @@ h2 {
 
   .slide {
     height: 180px;
+  }
+
+  .slide.slide-square {
+    height: 150px;
   }
 }

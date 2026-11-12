@@ -35,16 +35,18 @@ export const gallery = [
   ['sign-motorbikes', 'Mr. Brew logo on the shop wall with motorbikes parked below'],
 ]
 
-// Customer photos for the "Our Ka-brews" row: portrait 600x900, same [file, alt] shape as `gallery`
-// (files in public/images/gallery/). From a photo set on the Facebook page; swap for others the
-// owner prefers. The row hides itself if this list is empty.
+// Customer photos for the "Our Ka-brews" row: small square crops (~180px, from screenshots), same
+// [file, alt] shape as `gallery` (files in public/images/gallery/). Swap in full-size originals
+// when available. The row hides itself if this list is empty.
 export const customers = [
-  ['kabrew-1', 'Two Ka-brews in black shirts sitting at a table with their drinks'],
-  ['kabrew-2', 'A Ka-brew in a cap standing by the counter with an iced drink'],
-  ['kabrew-3', 'A Ka-brew in a black shirt at the wall counter with his drink'],
-  ['kabrew-4', 'Two Ka-brews on stools under the Must Try Flavors wall, one raising a drink'],
-  ['kabrew-5', 'A Ka-brew holding a milk tea next to a friend under the flavors wall'],
-  ['kabrew-6', 'Two Ka-brews relaxing on wooden stools with their drinks'],
-  ['kabrew-7', 'Two Ka-brews looking at their drinks under the flavors wall'],
-  ['kabrew-8', "A Ka-brew pointing at a friend's milk tea"],
+  ['kabrew-1', 'Students in school uniforms with their drinks under the #uniquelygood wall'],
+  ['kabrew-2', 'Four friends holding up their drinks under the Mr. Brew menu board'],
+  ['kabrew-3', 'A group of Ka-brews making hand signs for the camera'],
+  ['kabrew-4', 'Guests getting drinks at the Mr. Brew coffee cart during an event'],
+  ['kabrew-5', 'Three friends sitting under the Must Try Flavors banner'],
+  ['kabrew-6', 'Three Ka-brews giving a thumbs up at a round table'],
+  ['kabrew-7', 'Friends hanging out at a table by the window blinds'],
+  ['kabrew-8', 'Two friends smiling with their drinks by the orange blinds'],
+  ['kabrew-9', 'Three friends at a table by the orange blinds, one in a red jersey'],
+  ['kabrew-10', 'Five Ka-brews holding up their Mr. Brew cups'],
 ]
