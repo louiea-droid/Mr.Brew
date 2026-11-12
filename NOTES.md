@@ -6,7 +6,7 @@ Ideas for improving the site, in priority order. Tick them off as they get done.
 
 ## Highest value
 
-- [ ] **Put the site online.** It only runs on the local computer right now. Free hosting (Netlify, Vercel or Cloudflare Pages) takes a few minutes. A domain such as `mrbrewzambo.com` costs about ₱600–900 a year.
+- [x] **Put the site online.** Live at https://mrbrew.netlify.app (Netlify, builds from GitHub `main` via `netlify.toml`). Still to do: a custom domain. Free hosting (Netlify, Vercel or Cloudflare Pages) takes a few minutes. A domain such as `mrbrewzambo.com` costs about ₱600–900 a year.
 - [ ] **"Order on foodpanda" button.** Mr. Brew is on foodpanda, according to the Facebook page. Add a button in the hero and in the Visit section.
 - [ ] **Help Google show the shop.** Add structured data so Google can display the hours, address, phone and price range in search results. Pair it with a link to the Google Business Profile.
 - [ ] **Sharing preview image.** Shared links on Facebook and Messenger currently show no picture. Set one, such as the drinks tray or the Kape Blanko cup.

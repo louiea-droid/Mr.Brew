@@ -35,5 +35,6 @@ export const gallery = [
   ['sign-motorbikes', 'Mr. Brew logo on the shop wall with motorbikes parked below'],
 ]
 
-// ponytail: placeholders until the owner picks real customer photos
-export const CUSTOMER_PLACEHOLDERS = 8
+// Customer photos for the "Our Ka-brews" row, same [file, alt] shape as `gallery`
+// (files go in public/images/gallery/). The row stays hidden while this is empty.
+export const customers = []
