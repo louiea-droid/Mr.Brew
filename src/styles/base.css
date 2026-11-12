@@ -1,0 +1,75 @@
+:root {
+  --brew: #7b3e0d;
+  --brew-dark: #5e2f09;
+  --espresso: #2a1608;
+  --maroon: #8e1b1e;
+  --foam: #f4ece3;
+  --caramel: #e9c9a8;
+  --milk: #ffffff;
+  --ink: #33200f;
+  --muted: #6e5847;
+  --line: #e4d6c7;
+  --open: #2f7a3b;
+
+  --sans: 'Poppins', system-ui, sans-serif;
+  --serif: 'EB Garamond', Georgia, serif;
+
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--milk);
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background-color: var(--milk);
+  /* Faint coffee beans behind the site: two offset sizes so the tile repeat doesn't show */
+  --beans: url('/images/beans.svg') 0 0 / 260px, url('/images/beans.svg') 130px 95px / 410px;
+  background: var(--beans), var(--milk);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+dl,
+dd,
+blockquote {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--brew);
+  outline-offset: 3px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

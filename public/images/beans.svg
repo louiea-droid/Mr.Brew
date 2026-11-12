@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
+  <!-- Line-art coffee beans, tiled behind the whole site (see body in styles/base.css) -->
+  <defs>
+    <g id="bean" fill="none" stroke="#7b3e0d" stroke-width="2.2" stroke-linecap="round">
+      <ellipse rx="11" ry="16" />
+      <path d="M0 -14 C -6 -6 6 6 0 14" />
+    </g>
+  </defs>
+  <g opacity="0.045">
+    <use href="#bean" transform="translate(38 44) rotate(-28)" />
+    <use href="#bean" transform="translate(150 30) rotate(52) scale(0.8)" />
+    <use href="#bean" transform="translate(205 128) rotate(14) scale(1.1)" />
+    <use href="#bean" transform="translate(96 132) rotate(-70) scale(0.9)" />
+    <use href="#bean" transform="translate(30 200) rotate(35) scale(0.75)" />
+    <use href="#bean" transform="translate(160 212) rotate(-12)" />
+  </g>
+</svg>

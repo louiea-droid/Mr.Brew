@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mr. Brew Tea &amp; Coffee House | Zamboanga City</title>
+    <meta
+      name="description"
+      content="Premium milk tea, coffee and bubble waffles on Don Toribio St., Tetuan, Zamboanga City. Open Monday to Saturday, 10 AM to 10 PM. Coffee mobile cart available for weddings, birthdays and events."
+    />
+    <meta name="theme-color" content="#7b3e0d" />
+    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Poppins:wght@400;500;600;700;800&display=swap"
+    />
+    <script>
+      // Logo intro: first visit per browser session only, never with reduced motion.
+      try {
+        if (!sessionStorage.getItem('intro') && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+          document.documentElement.classList.add('has-intro')
+          sessionStorage.setItem('intro', '1')
+        }
+      } catch {
+        /* storage blocked: skip the intro */
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mockup: Hero to next page transition</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&family=Poppins:wght@400;500;600;700;800&display=swap" />
+<style>
+  :root { --brew:#7b3e0d; --espresso:#2a1608; --maroon:#8e1b1e; --caramel:#e9c9a8; --ink:#33200f; --line:#e4d6c7; --hh:68px; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Poppins, sans-serif; color:var(--ink); line-height:1.65;
+    background:url('/images/beans.svg') 0 0 / 260px, #fff; }
+  img { display:block; max-width:100%; }
+  h1, h2, p { margin:0; }
+  .wrap { width:min(1160px, 100% - 32px); margin-inline:auto; }
+
+  header { position:sticky; top:0; z-index:20; height:var(--hh); background:#fff; border-bottom:1px solid var(--line); }
+  header .wrap { display:flex; justify-content:space-between; align-items:center; height:100%; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.15rem; color:var(--brew); }
+  .brand img { height:36px; }
+  header nav { display:flex; gap:28px; font-weight:500; font-size:.95rem; }
+
+  /* ---------- hero (one unit: background + copy + frame) ---------- */
+  .hero { position:sticky; top:var(--hh); height:calc(100svh - var(--hh)); z-index:0; overflow:clip; }
+  .scene { position:absolute; inset:0; overflow:hidden; isolation:isolate; display:grid; align-items:center;
+    color:#fff; background:var(--espresso); transform-origin:50% 30%; }
+  .scene video { position:absolute; inset:0; z-index:-2; width:100%; height:100%; object-fit:cover; }
+  .scene::before { content:''; position:absolute; inset:0; z-index:-1;
+    background:linear-gradient(90deg, rgb(42 22 8 / .92), rgb(42 22 8 / .78) 45%, rgb(42 22 8 / .45)),
+               linear-gradient(0deg, rgb(42 22 8 / .6), transparent 40%); }
+  .shade { position:absolute; inset:0; background:var(--espresso); opacity:0; pointer-events:none; }
+  .inner { display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(32px, 5vw, 64px); align-items:center; }
+  .kicker { font-weight:600; color:var(--caramel); margin-bottom:12px; }
+  h1 { font-size:clamp(2.6rem, 6vw + .5rem, 4.75rem); font-weight:800; line-height:1; letter-spacing:-.035em; }
+  .text { margin-top:20px; max-width:34ch; font-size:1.125rem; color:rgb(255 255 255 / .82); }
+  .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+  .btn { display:inline-flex; align-items:center; min-height:48px; padding:12px 24px; border-radius:999px; font-weight:600; text-decoration:none; }
+  .b1 { background:#fff; color:var(--espresso); }
+  .b2 { border:1.5px solid rgb(255 255 255 / .4); color:#fff; }
+  .media { border-radius:24px; overflow:hidden; outline:2px solid var(--caramel); outline-offset:10px;
+    box-shadow:0 24px 60px rgb(0 0 0 / .5), 0 0 90px rgb(233 201 168 / .22); }
+  .media img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+
+  /* ---------- the "new page" that slides over ---------- */
+  .page { position:relative; z-index:1; background:url('/images/beans.svg') 0 0 / 260px, #fff; padding-top:96px; }
+  .feature { background:var(--maroon); color:#fff; }
+  .feature .wrap { display:grid; grid-template-columns:260px 1fr; gap:48px; align-items:center; padding-block:56px; }
+  .feature img { margin-top:-140px; filter:drop-shadow(0 24px 30px rgb(0 0 0 / .35)); }
+  .feature p:first-child { font-weight:500; opacity:.85; }
+  .feature h2 { font-size:clamp(2.6rem, 5vw, 4.5rem); font-weight:800; letter-spacing:-.03em; line-height:1.05; }
+  .feature em { display:block; margin-top:16px; font-family:'EB Garamond', serif; font-size:1.4rem; }
+  .filler { padding:96px 0 50vh; }
+  .filler h2 { color:var(--brew); font-size:clamp(2rem, 4vw, 3rem); font-weight:800; }
+
+  /* ---------- A: step back (hero recedes, page stacks on top) ---------- */
+  @keyframes recede { to { transform:scale(.88); border-radius:32px; filter:brightness(.55); } }
+  .a .page { border-radius:32px 32px 0 0; box-shadow:0 -30px 60px rgb(42 22 8 / .35); }
+
+  /* ---------- B: step in (hero zooms toward you and fades to espresso) ---------- */
+  @keyframes dive { to { transform:scale(1.35); } }
+  @keyframes dim { to { opacity:1; } }
+  @keyframes page-rise { from { transform:translateY(80px); } }
+
+  @supports (animation-timeline: scroll()) {
+    .a .scene { animation:recede linear both; animation-timeline:scroll(root); animation-range:0 100vh; }
+    .b .scene { animation:dive linear both; animation-timeline:scroll(root); animation-range:0 100vh; }
+    .b .shade { animation:dim linear both; animation-timeline:scroll(root); animation-range:20vh 100vh; }
+    .b .page > * { animation:page-rise linear both; animation-timeline:scroll(root); animation-range:30vh 110vh; }
+  }
+
+  /* mockup controls */
+  .switch { position:fixed; right:16px; bottom:16px; z-index:30; display:flex; gap:4px; padding:4px; background:#fff; border-radius:999px; box-shadow:0 4px 20px rgb(0 0 0 / .3); }
+  .switch button { border:0; font:inherit; font-size:.85rem; font-weight:600; padding:8px 14px; border-radius:999px; background:none; color:#6e5847; cursor:pointer; }
+  .switch button[aria-pressed='true'] { background:var(--brew); color:#fff; }
+
+  @media (max-width:900px) {
+    .inner { grid-template-columns:1fr; }
+    .media { display:none; } /* mockup only: keep the phone hero to one screen */
+    header nav { display:none; }
+    .feature .wrap { grid-template-columns:140px 1fr; gap:20px; }
+    .feature img { margin-top:-90px; }
+  }
+</style>
+</head>
+<body class="a">
+<header><div class="wrap">
+  <div class="brand"><img src="/images/logo.png" alt="" />Mr. Brew</div>
+  <nav><span>Menu</span><span>Our story</span><span>Events</span><span>Visit</span></nav>
+</div></header>
+
+<section class="hero">
+  <div class="scene">
+    <video src="/videos/coffee.mp4" poster="/videos/coffee-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+    <div class="wrap inner">
+      <div>
+        <p class="kicker">Mr. Brew Tea &amp; Coffee</p>
+        <h1>Where every cup tells a story</h1>
+        <p class="text">Premium tea and coffee, brewed daily for every Ka-brew. Coffee, milk tea and good food served fresh in Tetuan, Zamboanga City.</p>
+        <div class="actions"><a class="btn b1" href="#">See the menu</a><a class="btn b2" href="#">Book the coffee cart</a></div>
+      </div>
+      <div class="media"><img src="/images/drinks-tray.jpg" alt="" /></div>
+    </div>
+    <div class="shade"></div>
+  </div>
+</section>
+
+<div class="page">
+  <section class="feature"><div class="wrap">
+    <img src="/images/kape-blanko.png" alt="" />
+    <div>
+      <p>Meet your new coffee favorite</p>
+      <h2>Kape Blanko</h2>
+      <p>Freshly brewed espresso meets steamed cream milk for a naturally smooth finish.</p>
+      <em>A Zamboangueño formula.</em>
+    </div>
+  </div></section>
+  <section class="filler"><div class="wrap"><h2>Our menu</h2><p>(rest of the site continues here)</p></div></section>
+</div>
+
+<div class="switch" role="group" aria-label="Pick a transition">
+  <button data-v="a" aria-pressed="true">A · Step back</button>
+  <button data-v="b" aria-pressed="false">B · Step in</button>
+</div>
+<script>
+  document.querySelectorAll('.switch button').forEach((b) => b.onclick = () => {
+    document.body.className = b.dataset.v;
+    document.querySelectorAll('.switch button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+    scrollTo(0, 0);
+  });
+</script>
+</body>
+</html>

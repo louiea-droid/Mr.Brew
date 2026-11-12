@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mockup: Hero with coffee video</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&family=Poppins:wght@400;500;600;700;800&display=swap" />
+<style>
+  :root { --brew:#7b3e0d; --brew-dark:#5e2f09; --espresso:#2a1608; --foam:#f4ece3; --ink:#33200f; --muted:#6e5847; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Poppins, sans-serif; color:var(--ink); background:#fff; line-height:1.65; }
+  img { display:block; max-width:100%; }
+  h1, p { margin:0; }
+  .wrap { width:min(1160px, 100% - 32px); margin-inline:auto; }
+
+  /* mockup controls */
+  .switch { position:fixed; right:16px; bottom:16px; z-index:10; display:flex; gap:4px; padding:4px; background:#fff; border-radius:999px; box-shadow:0 4px 20px rgb(0 0 0 / .25); }
+  .switch button { border:0; font:inherit; font-size:.85rem; font-weight:600; padding:8px 16px; border-radius:999px; background:none; color:var(--muted); cursor:pointer; }
+  .switch button[aria-pressed='true'] { background:var(--brew); color:#fff; }
+
+  header { background:#fff; border-bottom:1px solid #e4d6c7; }
+  header .wrap { display:flex; justify-content:space-between; align-items:center; height:68px; }
+  header img { height:40px; }
+  header nav { display:flex; gap:20px; font-weight:500; font-size:.95rem; }
+
+  .hero-inner { display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(32px, 5vw, 64px); align-items:center; }
+  .hero h1 { font-size:clamp(2.6rem, 6vw + .5rem, 4.75rem); font-weight:800; line-height:1; letter-spacing:-.035em; }
+  .kicker { font-weight:600; margin-bottom:12px; }
+  .text { margin-top:20px; max-width:34ch; font-size:1.125rem; }
+  .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:12px 24px; border-radius:999px; font-weight:600; text-decoration:none; }
+  .photo { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:24px; }
+
+  /* ----- current hero ----- */
+  .hero.current { padding-block:clamp(40px, 7vw, 88px); }
+  .current h1 { color:var(--brew); }
+  .current .kicker, .current .text { color:var(--muted); }
+  .current .b1 { background:var(--brew); color:#fff; }
+  .current .b2 { border:2px solid var(--brew); color:var(--brew); }
+
+  /* ----- proposed: video background ----- */
+  .hero.video { position:relative; isolation:isolate; overflow:hidden; background:var(--espresso); color:#fff;
+    padding-block:clamp(56px, 9vw, 120px); }
+  .hero-bg { position:absolute; inset:0; z-index:-2; width:100%; height:100%; object-fit:cover; }
+  /* darker on the text side, lighter behind the photo so the beans still show */
+  .hero.video::before { content:''; position:absolute; inset:0; z-index:-1;
+    background:
+      linear-gradient(90deg, rgb(42 22 8 / .92) 0%, rgb(42 22 8 / .78) 45%, rgb(42 22 8 / .45) 100%),
+      linear-gradient(0deg, rgb(42 22 8 / .6), transparent 40%); }
+  .video .kicker { color:#e9c9a8; }
+  .video .text { color:rgb(255 255 255 / .82); }
+  .video .b1 { background:#fff; color:var(--espresso); }
+  .video .b2 { border:1.5px solid rgb(255 255 255 / .45); color:#fff; }
+  .video .photo { box-shadow:0 24px 60px rgb(0 0 0 / .45); }
+
+  [hidden] { display:none !important; }
+
+  @media (max-width:900px) {
+    .hero-inner { grid-template-columns:1fr; }
+    header nav { display:none; }
+    /* phones: no video download, the still frame stands in */
+    .hero.video::before { background:linear-gradient(180deg, rgb(42 22 8 / .9), rgb(42 22 8 / .7)); }
+  }
+  @media (prefers-reduced-motion:reduce) { .hero-bg { display:none; } }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <img src="/images/logo.png" alt="Mr. Brew" />
+  <nav><span>Menu</span><span>Our story</span><span>Coffee cart</span><span>Visit</span></nav>
+</div></header>
+
+<!-- Proposed -->
+<section class="hero video" id="proposed">
+  <video class="hero-bg" src="/videos/coffee.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
+  <div class="wrap hero-inner">
+    <div>
+      <p class="kicker">Mr. Brew Tea &amp; Coffee House</p>
+      <h1>Where every cup tells a story</h1>
+      <p class="text">Premium tea and coffee, brewed daily for every Ka-brew. Coffee, milk tea and good food served fresh in Tetuan, Zamboanga City.</p>
+      <div class="actions"><a class="btn b1" href="#">See the menu</a><a class="btn b2" href="#">Book the coffee cart</a></div>
+    </div>
+    <img class="photo" src="/images/drinks-tray.jpg" alt="" />
+  </div>
+</section>
+
+<!-- Current, for comparison -->
+<section class="hero current" id="current" hidden>
+  <div class="wrap hero-inner">
+    <div>
+      <p class="kicker">Mr. Brew Tea &amp; Coffee House</p>
+      <h1>Where every cup tells a story</h1>
+      <p class="text">Premium tea and coffee, brewed daily for every Ka-brew. Coffee, milk tea and good food served fresh in Tetuan, Zamboanga City.</p>
+      <div class="actions"><a class="btn b1" href="#">See the menu</a><a class="btn b2" href="#">Book the coffee cart</a></div>
+    </div>
+    <img class="photo" src="/images/drinks-tray.jpg" alt="" />
+  </div>
+</section>
+
+<div class="switch" role="group" aria-label="Compare heroes">
+  <button aria-pressed="true" data-show="proposed">With video</button>
+  <button aria-pressed="false" data-show="current">Current</button>
+</div>
+
+<script>
+  document.querySelectorAll('.switch button').forEach((b) => b.onclick = () => {
+    document.querySelectorAll('.switch button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+    document.getElementById('proposed').hidden = b.dataset.show !== 'proposed';
+    document.getElementById('current').hidden = b.dataset.show !== 'current';
+  });
+</script>
+</body>
+</html>
